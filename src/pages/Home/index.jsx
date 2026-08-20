@@ -1,7 +1,6 @@
 import Navbar from '@/components/Navbar'
 import HeroSection from './HeroSection'
 import FeaturesSection from './FeaturesSection'
-import ChatSection from './ChatSection'
 import Footer from './Footer'
 
 export default function Home() {
@@ -14,7 +13,6 @@ export default function Home() {
       <Navbar />
       <HeroSection />
       <FeaturesSection />
-      <ChatSection />
       <Footer />
     </div>
   )

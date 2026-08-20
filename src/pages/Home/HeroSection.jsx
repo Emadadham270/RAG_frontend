@@ -1,12 +1,15 @@
 import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom'
 import { Activity, Stethoscope, ChevronDown, BookOpen, CheckCircle2, Zap, ArrowRight } from 'lucide-react'
 import { Spotlight } from '@/components/ui/Spotlight'
 import { SplineScene } from '@/components/ui/SplineScene'
 import StatCard from '@/components/StatCard'
+import { useAuth } from '@/contexts/AuthContext'
 
 const SPLINE_SCENE = 'https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode'
 
 export default function HeroSection() {
+  const { token } = useAuth()
   return (
     <section
       id="home"
@@ -130,8 +133,8 @@ export default function HeroSection() {
           transition={{ delay: 0.64 }}
           style={{ display: 'flex', gap: 14, flexWrap: 'wrap', marginBottom: 52 }}
         >
-          <a
-            href="#ask-now"
+          <Link
+            to={token ? '/chat' : '/register'}
             style={{
               display: 'inline-flex', alignItems: 'center', gap: 8,
               padding: '13px 26px', borderRadius: 14, textDecoration: 'none',
@@ -150,9 +153,9 @@ export default function HeroSection() {
             }}
           >
             <Stethoscope style={{ width: 16, height: 16 }} />
-            Ask Now
+            {token ? 'Open Chat' : 'Ask Now'}
             <ArrowRight style={{ width: 14, height: 14 }} />
-          </a>
+          </Link>
           <a
             href="#features"
             style={{
@@ -176,17 +179,6 @@ export default function HeroSection() {
           </a>
         </motion.div>
 
-        {/* Stats */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.78 }}
-          style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 12, maxWidth: 390 }}
-        >
-          <StatCard icon={BookOpen}     value="1,000+" label="Medical Sources" iconBg="rgba(244,63,94,0.18)" />
-          <StatCard icon={CheckCircle2} value="99%"    label="Accuracy"        iconBg="rgba(34,197,94,0.18)" />
-          <StatCard icon={Zap}          value="< 2s"   label="Response Time"   iconBg="rgba(99,102,241,0.18)" />
-        </motion.div>
       </div>
 
       {/* ── Right: Spline 3D robot ── */}
