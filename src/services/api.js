@@ -4,7 +4,7 @@
  * Base URL points to the local Express backend.
  */
 
-const BASE = "http://localhost:5001";
+const BASE = import.meta.env.VITE_API_URL || "https://ragbackend-production.up.railway.app";
 
 // ── helpers ──────────────────────────────────────────────────────────────────
 
